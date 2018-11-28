@@ -1,0 +1,28 @@
+<section class="table-responsive">
+    <table id="tableDonnee" class="table">
+        <thead>
+            <th>Numéro Client</th>
+            <th>Nom du client</th>
+            <th>Nom du contact</th>
+            <th>Prénom du contact</th>
+            <th>Téléphone</th>
+            <th>Adresse</th>
+            <th>Employé référent</th>
+            <th>Limite crédit</th>
+        </thead>
+        <tbody>
+            <?php foreach($clients as $client):?>
+                <tr>
+                    <td><a href="client.php?id=<?=$client['customerNumber']?>"><?=$client['customerNumber']?></a></td>
+                    <td><?=$client['customerName']?></td>
+                    <td><?=$client['contactFirstName']?></td>
+                    <td><?=$client['contactLastName']?></td>
+                    <td><?=$client['phone']?></td>
+                    <td><?=$client['addressLine1']?><br/><?=$client['addressLine2']?><br/><?=$client['postalCode']?> <?=$client['city']?> - <?=$client['country']?></td>
+                    <td><?=$client['salesRepEmployeeNumber']?></td>
+                    <td><?=$client['creditLimit']?> €</td>
+                </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</section>

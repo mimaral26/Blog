@@ -1,0 +1,28 @@
+<section class="table-responsive">
+    <table id="tableDonnee" class="table">
+        <thead>
+            <th>Numéro Employes</th>
+            <th>Nom</th>
+            <th>Prénom </th>
+            <th>Num poste</th>
+            <th>Email</th>
+            <th>Num Bureau</th>
+            <th>Sup. hiérarchique</th>
+            <th>Titre</th>
+        </thead>
+        <tbody>
+            <?php foreach($employes as $employe):?>
+                <tr>
+                    <td><a href="employe.php?id=<?=$employe['employeeNumber']?>"><?=$employe['employeeNumber']?></a></td>
+                    <td><?=$employe['lastName']?></td>
+                    <td><?=$employe['firstName']?></td>
+                    <td><?=$employe['extension']?></td>
+                    <td><?=$employe['email']?></td>
+                    <td><?=$employe['officeCode']?></td>
+                    <td><?=$employe['reportsTo']?></td>
+                    <td><?=$employe['jobTitle']?></td>
+                </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</section>

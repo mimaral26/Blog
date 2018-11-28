@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6 table-responsive">
+        <h2>Vos dernières commandes sur un total de <?=$nbOrders['nbOrders']?></h2>
+        
+        <table class="table">
+            <thead>
+                <th>Num</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>N° Client</th>
+            </thead>
+            <tbody>
+                <?php foreach($orders as $index=>$order):?>
+                    <tr>
+                        <td><a href="bc.php?id=<?=$order['orderNumber']?>"><?=$order['orderNumber']?></a></td>
+                        <td><?=$order['orderDate']?></td>
+                        <td><?=$order['status']?></td>
+                        <td><a href="client.php?id=<?=$order['customerNumber']?>"><?=$order['customerNumber']?></a></td>
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+        <a class="btn btn-outline-primary" href="orders.php">Toutes les commandes</a>
+    </div>
+    <div class="col-md-6 table-responsive">
+        <h2>Vos dernières clients sur un total de <?=$nbCustomers['nbCustomers']?></h2>
+        
+        <table class="table">
+            <thead>
+                <th>Num</th>
+                <th>Nom</th>
+                <th>Contact</th>
+                <th>Employé référent</th>
+            </thead>
+            <tbody>
+                <?php foreach($clients as $client):?>
+                    <tr>
+                        <td><a href="client.php?id=<?=$client['customerNumber']?>"><?=$client['customerNumber']?></a></td>
+                        <td><?=$client['customerName']?></td>
+                        <td><?=$client['contactFirstName']?> <?=$client['contactLastName']?></td>
+                        <td><?=$client['salesRepEmployeeNumber']?></td>
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+        <a class="btn btn-outline-primary" href="clients.php">Tous les clients</a>
+    </div>
+</div>
+

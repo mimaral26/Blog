@@ -1,0 +1,28 @@
+<div class="table-responsive">
+    <table id="tableDonnee">
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Date</th>
+                <th>Date livraison</th>
+                <th>Date d'envoi</th>
+                <th>Status</th>
+                <th>Commentaires</th>
+                <th>N° Client</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($results as $index=>$result):?>
+                <tr>
+                    <td><a href="bc.php?id=<?=$result['orderNumber']?>"><?=$result['orderNumber']?></a></td>
+                    <td><?=$result['orderDate']?></td>
+                    <td><?=$result['requiredDate']?></td>
+                    <td><?=$result['shippedDate']?></td>
+                    <td><?=$result['status']?></td>
+                    <td><?=$result['comments']?></td>
+                    <td><a href="client.php?id=<?=$result['customerNumber']?>"><?=$result['customerNumber']?></a></td>
+                </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,40 @@
+<section>
+<?php if($erreur):?><?=$erreur?><?php endif;?>
+    <form method="post" action="addUser.php">
+        
+            <label for="nom"> Nom : </label>
+            <input id="nom" type="text" name="nom" placeholder="nom">
+            
+            <label for="prenom"> Prenom : </label>
+            <input id="prenom" type="text" name="prenom" placeholder="prenom">
+
+            <label for="email"> E-mail : </label>
+            <input id="email" type="email" name="email" placeholder="email">
+            
+            <label for="avatar"> Pseudo : </label>
+            <input id="avatar" type="text" name="avatar" placeholder="pseudo">
+            
+            <label for="bio"> Biographie : </label>
+            <input id="bio" type="text" name="bio" placeholder="biographie">
+
+            <label for="role"> Role : </label>
+            <input id="role" type="role" name="role" placeholder="position">
+
+            <label for="identifiant"> Identifiant: </label>
+            <input id="identifiant" type="text" name="identifiant" placeholder="username">
+
+            <label for="motDePasse"> Mot de passe :  </label>
+            <input id="motDePasse" type="motDePasse" name="motDePasse" placeholder="mot de passe">
+
+            <label for="confirmerMotDePasse"> Confirmer votre mot de passe :  </label>
+            <input id="confirmerMotDePasse" type="confirmerMotDePasse" name="confirmerMotDePasse" placeholder="mot de passe">
+
+            <input type="submit" value="Soumettre">
+       
+    </form>
+</section>
+
+
+
+
+
