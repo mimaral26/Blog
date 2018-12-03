@@ -3,11 +3,18 @@
 
 session_start();
 
+//le fichier config.php contient les identifiants 
+//de connexion à la base de données sous forme de variables
 include('../config/config.php');
+
+//Le fichier bdd.lib.php contient la fonction connexion qui 
+//permet de générer un nouveau PDO (PHP Data Object) et se 
+//connecter en utilisant les identifiants de config.php
 include('../lib/bdd.lib.php');
 
-//userIsConnected();
+verificationConnexion();
 
+// On inclut dans une variable la vue du fichier qui sera affiché si tout fonctionne
 $vue ='addUser.phtml';
 $title = 'Inscription de nouveaux auteurs';
 //Initialisation des erreurs à false
@@ -38,10 +45,11 @@ $tab_erreur =
 'email'=>'L\'email doit être rempli !',
 'password'=>'Le mot de passe ne peut être vide'
 ];
-
+// Tentative d'exécution 'try' qui sous-entend qu'une alternative 'catch' 
+//peut être précisée (afin notamment d'éviter d'afficher le mot de passe en clair en cas d'échec) / La flèche correspond à l'équivalent du "." de Javascript suivie d'une fonction qui est propre à l'objet PDO
 try
 {
-   
+    // Vérification de la présence d'un nom rempli dans le formulaire
     if(array_key_exists('nom',$_POST))
    {
         // if($_POST['motDePasse'] === $_POST['confirmerMotDePasse'])
@@ -69,10 +77,12 @@ try
      
         if($erreur =='')
         {
-            $tableAuteurs['motDePasse'] = password_hash($_POST['motDePasse'], PASSWORD_DEFAULT);
+            // Hashage du mot de passe
+            $motDePassehache = password_hash($_POST['motDePasse'], PASSWORD_DEFAULT);
             
-            //il faut faire une requête pour vérifier que l'email n'est pas déjà dans la base
-            
+            // Modification du tableau des résultats en précisant le mot de passe haché
+           
+            $tableAuteurs['motDePasse'] = $motDePassehache;
             
             //$tableAuteurs['dateCreated'] = date('Y-m-d h:i:s');
             
@@ -105,11 +115,11 @@ try
     }
 }
 
-    catch(PDOException $e)
-    {
-        /*Si une exception est envoyée par PDO (exemple : serveur de BDD innaccessible) on arrive ici*/
-        $erreur = 'Une erreur de connexion a eu lieu :'.$e->getMessage();
-    }
+catch(PDOException $e)
+{
+    /*Si une exception est envoyée par PDO (exemple : serveur de BDD innaccessible) on arrive ici*/
+    $erreur = 'Une erreur de connexion a eu lieu :'.$e->getMessage();
+}
 
 /* On inclut la vue pour afficher les résultats */
 include('tpl/layout.phtml');
